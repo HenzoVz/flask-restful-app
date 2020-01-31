@@ -1,0 +1,47 @@
+{
+    "hoteis": [
+        {
+            "id": 1,
+            "hotel_id": "palace",
+            "nome": "Palace Hotel",
+            "estrelas": "5.0",
+            "diaria": "1000.0",
+            "cidade": "Fortaleza"
+        },
+        {
+            "id": 2,
+            "nome": "Atlas Hotel",
+            "estrelas": "5.0",
+            "diaria": "1000.0",
+            "cidade": "São Paulo"
+        },
+        {
+            "id": 3,
+            "nome": "Palace Hotel",
+            "estrelas": "5.0",
+            "diaria": "1000.0",
+            "cidade": "Fortaleza"
+        },
+        {
+            "id": 4,
+            "nome": "Palace Hotel",
+            "estrelas": "5.0",
+            "diaria": "1000.0",
+            "cidade": "Fortaleza"
+        },
+        {
+            "id": 5,
+            "nome": "Paris Hotel",
+            "estrelas": "5.0",
+            "diaria": "1500.0",
+            "cidade": "Rio de Janeiro"
+        },
+        {
+            "id": 6,
+            "nome": "Brazil Hotel",
+            "estrelas": "5.0",
+            "diaria": "1500.0",
+            "cidade": "Rio de Janeiro"
+        }
+    ]
+}
