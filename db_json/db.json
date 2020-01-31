@@ -2,7 +2,6 @@
     "hoteis": [
         {
             "id": 1,
-            "hotel_id": "palace",
             "nome": "Palace Hotel",
             "estrelas": "5.0",
             "diaria": "1000.0",

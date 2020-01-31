@@ -1,11 +1,11 @@
 import os
 import json
 
-class DB_json:
+class DB:
 
     @staticmethod
     def read():
-        path = '/home/murilo/Desktop/Estudos/Web/Python/restful-app/db/'
+        path = '/home/murilo/Desktop/Estudos/Web/Python/restful-app/db_json/'
         filename = 'db.json'
         db = os.path.join(path, filename)
 
@@ -15,7 +15,7 @@ class DB_json:
 
     @staticmethod
     def save(hotel):
-            path = '/home/murilo/Desktop/Estudos/Web/Python/restful-app/db/'
+            path = '/home/murilo/Desktop/Estudos/Web/Python/restful-app/db_json/'
             filename = 'db.json'
             db = os.path.join(path, filename)
             with open(db, 'w', encoding='utf8') as write:

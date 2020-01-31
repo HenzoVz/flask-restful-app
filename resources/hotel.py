@@ -1,12 +1,12 @@
 from flask_restful import Resource, reqparse
-from db.data_base import DB_json
+from db_json.data_base import DB
 from models.hotel import HotelModel
 
 
 class Hoteis(Resource):
     def get(self):
-        if len(DB_json.read()['hoteis']) > 0:
-            return {'hoteis': list(map(lambda hotel: hotel, DB_json.read()['hoteis']))}, 200
+        if len(DB.read()['hoteis']) > 0:
+            return {'hoteis': list(map(lambda hotel: hotel, DB.read()['hoteis']))}, 200
         return {'message': 'Hoteis not found'}, 404
 
 class Hotel(Resource):
@@ -17,7 +17,7 @@ class Hotel(Resource):
     argumentos.add_argument('diaria')
     argumentos.add_argument('cidade')
 
-    db = DB_json.read()
+    db = DB.read()
 
     @staticmethod
     def find(hotel_id):
@@ -38,9 +38,11 @@ class Hotel(Resource):
         dados = Hotel.argumentos.parse_args()
         hto = HotelModel(hotel_id, **dados)
         novo_hotel = hto.json()
-        Hotel.db['hoteis'].append(novo_hotel)
-        DB_json.save(Hotel.db)
-        return novo_hotel, 200
+        if hotel_id != Hotel.db['id']:
+            Hotel.db['hoteis'].append(novo_hotel)
+            DB.save(Hotel.db)
+            return novo_hotel, 200
+        return {'message': str(hotel_id) + 'existing'}
 
     def put(self, hotel_id):
 
@@ -51,7 +53,7 @@ class Hotel(Resource):
         if hotel:
             hotel.update(novo_hotel)
             Hotel.db['hoteis'].append(hotel)
-            DB_json.save(Hotel.db)
+            DB.save(Hotel.db)
             return novo_hotel, 200
         return {'message': 'Hotel not found'}, 404
 
@@ -60,6 +62,6 @@ class Hotel(Resource):
         hotel = Hotel.find(hotel_id)
         if hotel:
             Hotel.db['hoteis'].pop(hotel['id'] - 1)
-            DB_json.save(Hotel.db)
+            DB.save(Hotel.db)
             return {'message': 'hotel successfully deleted'}, 200
         return {'message': 'Hotel not found'}, 404
